@@ -415,7 +415,7 @@
                     },
                     body: JSON.stringify({
                         query: query,
-                        topK: 5
+                        topK: 10
                     })
                 });
 
@@ -424,16 +424,8 @@
                 // Remove loading message
                 removeLastMessage();
 
-                // Add assistant response
+                // Add assistant response (without sources)
                 let answer = data.answer || 'No answer generated';
-                
-                // Add sources
-                if (data.retrievedChunks && data.retrievedChunks.length > 0) {
-                    const sources = data.retrievedChunks.map(chunk => 
-                        `${chunk.documentName} (${chunk.score.toFixed(2)})`
-                    ).join(', ');
-                    answer += `\n\n📚 Sources: ${sources}`;
-                }
 
                 addMessage('assistant', answer);
                 queriesCount++;

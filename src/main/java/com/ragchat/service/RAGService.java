@@ -23,7 +23,7 @@ public class RAGService {
     private final OllamaService ollamaService;
     private final VectorStoreService vectorStoreService;
     
-    @Value("${vector.top-k:5}")
+    @Value("${vector.top-k:10}")
     private int defaultTopK;
     
     public RAGService(OllamaService ollamaService, VectorStoreService vectorStoreService) {
@@ -113,9 +113,11 @@ public class RAGService {
         StringBuilder promptBuilder = new StringBuilder();
         
         // System instruction
-        promptBuilder.append("You are a helpful AI assistant. Answer the user's question based on the provided context.\n");
-        promptBuilder.append("If the context doesn't contain enough information to answer the question, say so honestly.\n");
-        promptBuilder.append("Be concise and accurate in your response.\n\n");
+        promptBuilder.append("You are a knowledgeable AI assistant. Answer the user's question comprehensively based on the provided context.\n");
+        promptBuilder.append("Provide detailed, well-structured answers with relevant information from the documents.\n");
+        promptBuilder.append("Use multiple paragraphs if needed to fully explain the topic.\n");
+        promptBuilder.append("If the context doesn't contain enough information, state what you know and what's missing.\n");
+        promptBuilder.append("Be informative, accurate, and thorough in your response.\n\n");
         
         // Add context from retrieved chunks
         promptBuilder.append("Context:\n");
