@@ -96,6 +96,6 @@ public class ChunkingService {
      * Get current chunk configuration
      */
     public String getChunkingInfo() {
-        return String.format("Chunk size: %d, Overlap: %d", chunkSize, chunkOverlap);
+        return "Chunk size: %d, Overlap: %d".formatted(chunkSize, chunkOverlap);
     }
 }

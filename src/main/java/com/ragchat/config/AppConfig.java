@@ -7,7 +7,6 @@ import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Configuration for application directories
@@ -29,7 +28,7 @@ public class AppConfig {
     }
     
     private void createDirectoryIfNotExists(String dirPath) throws IOException {
-        Path path = Paths.get(dirPath);
+        Path path = Path.of(dirPath);
         if (!Files.exists(path)) {
             Files.createDirectories(path);
         }

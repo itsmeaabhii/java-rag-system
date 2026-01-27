@@ -18,7 +18,6 @@ import jakarta.annotation.PreDestroy;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class VectorStoreService {
     
     @PostConstruct
     public void init() throws IOException {
-        Path indexPath = Paths.get(indexDir);
+        Path indexPath = Path.of(indexDir);
         directory = FSDirectory.open(indexPath);
         
         IndexWriterConfig config = new IndexWriterConfig(new StandardAnalyzer());

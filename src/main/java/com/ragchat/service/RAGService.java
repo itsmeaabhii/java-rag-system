@@ -125,9 +125,9 @@ public class RAGService {
             VectorStoreService.ScoredChunk scoredChunk = scoredChunks.get(i);
             Chunk chunk = scoredChunk.getChunk();
             
-            promptBuilder.append(String.format("[Document: %s, Chunk %d]\n", 
-                                              chunk.getDocumentName(), 
-                                              chunk.getChunkIndex()));
+            promptBuilder.append("[Document: %s, Chunk %d]\n".formatted(
+                chunk.getDocumentName(),
+                chunk.getChunkIndex()));
             promptBuilder.append(chunk.getText());
             promptBuilder.append("\n\n");
         }
