@@ -1,0 +1,48 @@
+# Build artifacts
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Application data
+data/
+uploads/
+lucene-index/
+
+# Logs
+logs/
+*.log
+spring.log
+
+# Test files
+test-pdfs/
+
+# Environment
+.env
+.env.local
