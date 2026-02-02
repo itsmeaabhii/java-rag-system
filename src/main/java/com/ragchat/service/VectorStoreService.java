@@ -138,16 +138,17 @@ public class VectorStoreService {
             
             // Calculate cosine similarity for each document
             List<ScoredDocument> scoredDocs = new ArrayList<>();
+            StoredFields storedFields = searcher.storedFields();
             
             for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
-                Document doc = searcher.doc(scoreDoc.doc);
+                Document doc = storedFields.document(scoreDoc.doc);
                 
                 BytesRef embeddingBytes = doc.getBinaryValue("embedding");
                 if (embeddingBytes != null) {
                     float[] docEmbedding = bytesToFloatArray(embeddingBytes.bytes);
                     float similarity = cosineSimilarity(queryEmbedding, docEmbedding);
                     
-                    scoredDocs.add(new ScoredDocument(doc, similarity, scoreDoc.doc));
+                    scoredDocs.add(new ScoredDocument(doc, similarity));
                 }
             }
             
@@ -284,12 +285,10 @@ public class VectorStoreService {
     private static class ScoredDocument {
         final Document document;
         final float score;
-        final int docId;
         
-        ScoredDocument(Document document, float score, int docId) {
+        ScoredDocument(Document document, float score) {
             this.document = document;
             this.score = score;
-            this.docId = docId;
         }
     }
 }

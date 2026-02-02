@@ -2,7 +2,6 @@ package com.ragchat.service;
 
 import com.ragchat.dto.UploadResponse;
 import com.ragchat.model.Chunk;
-import com.ragchat.model.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -60,7 +58,8 @@ public class DocumentService {
                 throw new IllegalArgumentException("File is empty");
             }
             
-            if (!file.getOriginalFilename().toLowerCase().endsWith(".pdf")) {
+            String filename = file.getOriginalFilename();
+            if (filename == null || !filename.toLowerCase().endsWith(".pdf")) {
                 throw new IllegalArgumentException("Only PDF files are supported");
             }
             
