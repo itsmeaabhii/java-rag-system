@@ -11,6 +11,7 @@ A complete **Retrieval Augmented Generation (RAG)** system built with Java, Spri
 - **RAG Pipeline**: Complete retrieval-augmented generation workflow
 - **REST API**: Clean, documented REST endpoints
 - **CORS Support**: Frontend integration ready
+- **Modern UI**: CogniChat - Beautiful, responsive web interface with dark mode support
 
 ## 🛠️ Tech Stack
 
@@ -314,6 +315,35 @@ Complete API documentation is available via the endpoints themselves. Use tools 
 - **Postman**: Import the API collection
 - **Swagger/OpenAPI**: (Can be added if needed)
 - **curl**: Examples provided above
+
+## 🎨 Web Interface (CogniChat)
+
+The project includes a modern, responsive web interface for interacting with the RAG system.
+
+### Features
+- **Modern Design**: Clean, professional interface with gradient effects
+- **Dark Mode**: Automatic theme switching with localStorage persistence
+- **Drag & Drop**: Easy file upload with visual feedback
+- **Real-time Feedback**: Toast notifications for all actions
+- **Workflow Steps**: Visual progress indicator (Upload → Query → Results)
+- **Responsive**: Works seamlessly on desktop, tablet, and mobile devices
+
+### Access the UI
+1. Start the backend server:
+   ```bash
+   mvn spring-boot:run
+   ```
+
+2. Open the interface:
+   ```bash
+   # Open in browser
+   open frontend/one.html
+   ```
+
+### UI Files
+- `frontend/one.html` - Modern HTML structure
+- `frontend/one.css` - Comprehensive design system with dark mode
+- `frontend/one.js` - Interactive functionality and API integration
 
 ## 🔐 Security Notes
 
