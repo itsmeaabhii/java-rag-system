@@ -10,6 +10,8 @@ A complete **Retrieval Augmented Generation (RAG)** system built with Java, Spri
 - **Semantic Search**: Apache Lucene-based vector similarity search
 - **RAG Pipeline**: Complete retrieval-augmented generation workflow
 - **REST API**: Clean, documented REST endpoints
+- **Health Monitoring**: Comprehensive health checks with system metrics
+- **Performance Tracking**: Request timing and performance logging
 - **CORS Support**: Frontend integration ready
 - **Modern UI**: CogniChat - Beautiful, responsive web interface with dark mode support
 

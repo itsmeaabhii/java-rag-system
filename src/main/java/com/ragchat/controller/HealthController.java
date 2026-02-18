@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.management.ManagementFactory;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +30,10 @@ public class HealthController {
     @Value("${ollama.base-url}")
     private String ollamaUrl;
     
+    private final long startTime = System.currentTimeMillis();
+    
     /**
-     * Health check endpoint
+     * Health check endpoint with detailed system metrics
      * 
      * GET /api/health
      */
@@ -41,6 +45,17 @@ public class HealthController {
         response.put("version", applicationVersion);
         response.put("timestamp", LocalDateTime.now().toString());
         response.put("ollamaUrl", ollamaUrl);
+        
+        // Add system metrics
+        Map<String, Object> systemMetrics = new HashMap<>();
+        Runtime runtime = Runtime.getRuntime();
+        long usedMemory = (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
+        long maxMemory = runtime.maxMemory() / (1024 * 1024);
+        systemMetrics.put("usedMemoryMB", usedMemory);
+        systemMetrics.put("maxMemoryMB", maxMemory);
+        systemMetrics.put("uptimeSeconds", (System.currentTimeMillis() - startTime) / 1000);
+        systemMetrics.put("processors", runtime.availableProcessors());
+        response.put("system", systemMetrics);
         
         Map<String, String> services = new HashMap<>();
         services.put("vector-store", "operational");

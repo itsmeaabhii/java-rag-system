@@ -39,6 +39,7 @@ public class QueryController {
      */
     @PostMapping
     public ResponseEntity<?> query(@Valid @RequestBody QueryRequest request) {
+        long startTime = System.currentTimeMillis();
         logger.info("Received query request: {}", request.getQuery());
         
         try {
@@ -48,10 +49,14 @@ public class QueryController {
                 request.getDocumentName()
             );
             
+            long processingTime = System.currentTimeMillis() - startTime;
+            logger.info("Query processed successfully in {}ms", processingTime);
+            
             return ResponseEntity.ok(response);
             
         } catch (Exception e) {
-            logger.error("Error processing query", e);
+            long processingTime = System.currentTimeMillis() - startTime;
+            logger.error("Error processing query after {}ms: {}", processingTime, e.getMessage(), e);
             
             Map<String, String> error = new HashMap<>();
             error.put("error", "Failed to process query");
