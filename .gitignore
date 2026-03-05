@@ -1,5 +1,7 @@
 # Build artifacts
 target/
+build/
+out/
 *.class
 *.jar
 *.war
@@ -12,6 +14,17 @@ target/
 .mvn/
 mvnw
 mvnw.cmd
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
 
 # IDE files
 .idea/
@@ -22,13 +35,40 @@ mvnw.cmd
 .settings/
 .classpath
 .project
+.metadata/
+.recommenders/
+bin/
 *.swp
 *.swo
 *~
+*.bak
+.factorypath
+
+# Eclipse
+.apt_generated/
+.springBeans
+.sts4-cache/
+
+# IntelliJ
+*.iws
+/out/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
 # OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
 
 # Application data
 data/
@@ -39,10 +79,25 @@ lucene-index/
 logs/
 *.log
 spring.log
+application.log
 
 # Test files
 test-pdfs/
+test-results/
 
 # Environment
 .env
 .env.local
+.env.development
+.env.test
+.env.production
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+
+# Backup files
+*.backup
+*.bak
+*.old
